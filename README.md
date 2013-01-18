@@ -31,7 +31,7 @@ Or install it yourself as:
 
 ## Contributing
 
-This gem implements only the basic SPLAY subset needed for simple payment in Czech Republic. Feel free to extend this gem based on your needs and send pull requests.
+This gem implements only the basic SPAYD subset needed for simple payment in Czech Republic. Feel free to extend this gem based on your needs and send pull requests.
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)

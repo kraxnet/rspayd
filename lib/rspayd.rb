@@ -31,7 +31,7 @@ module Rspayd
       "CZ#{checksum}#{base}"
     end
 
-    # SPLAY string for payment
+    # SPAYD string for payment
     def to_s
       out = []
       out << "SPD*1.0"
@@ -43,7 +43,7 @@ module Rspayd
       out.join
     end
 
-    # generates SPLAY string for payment
+    # generates SPAYD string for payment
     def self.generate_string(options)
       new(options).to_s
     end
