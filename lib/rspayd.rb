@@ -1,4 +1,4 @@
-require "rspayd/version"
+require File.expand_path(File.join(File.dirname(__FILE__), 'rspayd/version'))
 
 module Rspayd
   class CzechPayment
