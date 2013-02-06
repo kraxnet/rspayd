@@ -2,10 +2,10 @@
 require File.expand_path('../lib/rspayd/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Jiří Kubíček"]
+  gem.authors       = ["Jiri Kubicek"]
   gem.email         = ["jiri.kubicek@kraxnet.cz"]
   gem.description   = %q{Gem for generating spayd content}
-  gem.summary       = %q{SPAYD (Short Payment Descriptor) is a format used by CBA (Česká bankovní asociace) for QR Payment (QR Platba). This gem generates payment info in SPAYD format.}
+  gem.summary       = %q{SPAYD (Short Payment Descriptor) is a format used by CBA (Ceska bankovni asociace) for QR Payment (QR Platba). This gem generates payment info in SPAYD format.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
