@@ -2,6 +2,45 @@
 require File.expand_path(File.join(File.dirname(__FILE__), 'rspayd/version'))
 
 module Rspayd
+	class ForeignPayment
+	
+		# iban
+		# bic/swift
+		# ammount
+		# currency
+		# message
+		
+		attr_reader :iban, :bic, :ammount, :currency, :message
+		
+		def initialize(options)
+			options = Hash[options.map{|(k,v)| [k.to_sym,v]}]
+      @iban						= options[:iban]
+      @bic						= options[:bic]
+      @ammount				= options[:ammnout]
+      @currency       = options[:currency] || 'CZK'
+      @message        = options[:message]
+		end
+		
+		 # SPAYD string for payment
+    def to_s
+      out = []
+      out << "SPD*1.0"
+      out << "*IBAN:#{iban}"
+			out << "*BIC:#{bic}"
+      out << "*AM:#{'%.2f' % ammount}" if ammount
+      out << "*CC:#{currency}" if currency
+      out << "*MSG:#{message.upcase}" if message
+      out.join
+    end
+
+    # generates SPAYD string for payment
+    def self.generate_string(options)
+      new(options).to_s
+    end
+		
+		
+	end
+	
   class CzechPayment
 
     # accountPrefix - Předčíslí čísla účtu, na který se mají poslat prostředky.
