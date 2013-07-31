@@ -27,7 +27,7 @@ Or install it yourself as:
       :vs=>"31030001",
       :message => "Platba za domenu"
     )
-    => SPD*1.0*IBAN:CZ9555000000000810883001*AM:430.00*CC:CZK*X-VS:31030001*MSG:PLATBA ZA DOMENU
+    => SPD*1.0*ACC:CZ9555000000000810883001*AM:430.00*CC:CZK*X-VS:31030001*MSG:PLATBA ZA DOMENU
 
 ## Contributing
 

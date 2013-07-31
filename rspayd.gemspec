@@ -14,4 +14,7 @@ Gem::Specification.new do |gem|
   gem.name          = "rspayd"
   gem.require_paths = ["lib"]
   gem.version       = Rspayd::VERSION
+
+  gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'minitest'
 end
