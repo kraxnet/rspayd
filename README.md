@@ -1,5 +1,7 @@
 # Rspayd
 
+[![Build Status](https://travis-ci.org/kraxnet/rspayd.png)](https://travis-ci.org/kraxnet/rspayd)
+
 SPAYD (Short Payment Descriptor) is a format used by CBA (Česká bankovní asociace) for QR Payment (QR Platba). This gem generates payment info in SPAYD format.
 
 Great for use with ruby QR code gem [rqrcode](http://whomwah.github.com/rqrcode/).
