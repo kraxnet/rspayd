@@ -13,12 +13,23 @@ module Rspayd
     attr_reader :accountPrefix, :accountNumber, :bankCode, :vs, :ss
 
     def initialize(options)
-      options = Hash[options.map{|(k,v)| [k.to_sym,v]}]
-      @accountPrefix  = options[:accountPrefix] || ''
-      @accountNumber  = options[:accountNumber]
-      @bankCode       = options[:bankCode]
-      @vs             = options[:vs]
-      @ss             = options[:ss]
+      options = Hash[options.map { |(k, v)| [k.to_sym, v] }]
+
+      if options[:accountNumber] && options[:accountNumber].match('/')
+        czech_bank_account_number_parser = CzechBankAccountNumberParser.new(options[:accountNumber])
+
+        @accountPrefix = czech_bank_account_number_parser.account_prefix || ''
+        @accountNumber = czech_bank_account_number_parser.account_number
+        @bankCode = czech_bank_account_number_parser.bank_code
+      else
+        @accountPrefix = options[:accountPrefix] || ''
+        @accountNumber = options[:accountNumber]
+        @bankCode = options[:bankCode]
+      end
+
+      @vs = options[:vs]
+      @ss = options[:ss]
+
       super
     end
 
