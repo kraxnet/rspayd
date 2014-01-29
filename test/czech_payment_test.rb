@@ -68,4 +68,11 @@ class CzechPaymentTest < MiniTest::Unit::TestCase
     assert_equal 'CZ0420100000002950281886', result.iban
   end
 
+  def test_striping_spaces_from_account_number
+    result = Rspayd::CzechPayment.new(
+      :accountNumber => '1230 - 2950281888 / 2010'
+    )
+    assert_equal 'CZ2920100012302950281888', result.iban
+  end
+
 end

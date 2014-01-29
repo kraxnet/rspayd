@@ -10,15 +10,19 @@ module Rspayd
     end
 
     def bank_code
-      bank_account_number_parts[1]
+      bank_account_number_parts[1].strip
     end
 
     def account_prefix
-      bank_account_number_account_number_parts_reversed[1]
+      if bank_account_number_account_number_parts_reversed[1]
+        bank_account_number_account_number_parts_reversed[1].strip
+      else
+        nil
+      end
     end
 
     def account_number
-      bank_account_number_account_number_parts_reversed[0]
+      bank_account_number_account_number_parts_reversed[0].strip
     end
 
     private
