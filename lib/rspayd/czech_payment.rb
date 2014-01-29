@@ -37,7 +37,7 @@ module Rspayd
     def iban
       return @iban if @iban
       base = "#{bankCode}#{accountPrefix.rjust(6,'0')}#{accountNumber.rjust(10,'0')}"
-      checksum = 98 - ("#{base}123500".to_i % 97)
+      checksum = (98 - ("#{base}123500".to_i % 97)).to_s.rjust(2,'0')
       "CZ#{checksum}#{base}"
     end
 

@@ -59,4 +59,13 @@ class CzechPaymentTest < MiniTest::Unit::TestCase
 
     assert_equal 'SPD*1.0*ACC:CZ5855000000001265098001*AM:480.50*CC:CZK*RF:7004139146*DT:20120524*MSG:PLATBA ZA ZBOZI*X-SS:1234567890', result
   end
+
+  def test_iban_checksum_prepend
+    result = Rspayd::CzechPayment.new(
+      :accountNumber => '2950281886',
+      :bankCode => '2010'
+    )
+    assert_equal 'CZ0420100000002950281886', result.iban
+  end
+
 end
