@@ -8,7 +8,7 @@ module Rspayd
       :ntb, :cc, :fx, :fxa, :acc, :crc32, :x_sw, :x_url
 
     #platba
-    attr_reader :rf, :rn, :pt, :nt, :nta, :xvs
+    attr_reader :rf, :rn, :pt, :nt, :nta, :x_vs
 
     def initialize(options)
       options = Hash[options.map{|(k,v)| [k.downcase.to_sym,v]}]
@@ -56,11 +56,11 @@ module Rspayd
     end
 
     def to_qr_payment
-      @xvs = @vs
+      @x_vs = @vs
       out = []
       out << "SPD*1.0"
       # TODO :msg, :dt
-      [:am, :xvs, :dt, :cc, :acc, :rf, :rn, :pt, :crc32, :nt, :nta].each{|key|
+      [:am, :x_vs, :dt, :cc, :acc, :rf, :rn, :pt, :crc32, :nt, :nta].each{|key|
         out << "#{key.to_s.upcase.gsub(/_/,'-')}:#{self.send(key)}" unless self.send(key).nil?
       }
       inv = ([:id, :msg, :dd, :tp, :on, :vii, :ini, :inr, :vir, :duzp, :dt, :dppd, :tb0, :t0, :tb1, :t1, :tb2, :t2, :ntb, :fx, :fxa, :td, :sa, :x_sw, :x_url].collect{|key|
