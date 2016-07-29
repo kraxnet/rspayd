@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PaymentTest < MiniTest::Unit::TestCase
+class PaymentTest < MiniTest::Test
   def test_sample_payment
     result = Rspayd::Payment.generate_string(
       :iban => 'CZ5855000000001265098001',

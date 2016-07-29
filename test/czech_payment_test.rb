@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CzechPaymentTest < MiniTest::Unit::TestCase
+class CzechPaymentTest < MiniTest::Test
   def test_simple_czech_payment
     result = Rspayd::CzechPayment.generate_string(
       :accountNumber => '810883001',

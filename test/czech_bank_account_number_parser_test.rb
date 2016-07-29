@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CzechBankAccountNumberParserTest < MiniTest::Unit::TestCase
+class CzechBankAccountNumberParserTest < MiniTest::Test
   def test_bank_account_number_parsing_with_prefix
     parser = Rspayd::CzechBankAccountNumberParser.new('111222-1122334455/1234')
 
