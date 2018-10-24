@@ -10,7 +10,7 @@ module Rspayd
     # vs            - Variabilní symbol.
     # ss            - Specifický symbol.
 
-    attr_reader :accountPrefix, :accountNumber, :bankCode, :vs, :ss
+    attr_reader :accountPrefix, :accountNumber, :bankCode, :vs, :ss, :ks
 
     def initialize(options)
       options = Hash[options.map { |(k, v)| [k.to_sym, v] }]
@@ -29,6 +29,7 @@ module Rspayd
 
       @vs = options[:vs]
       @ss = options[:ss]
+      @ks = options[:ks]
 
       super
     end
@@ -46,6 +47,7 @@ module Rspayd
       out = [ super ]
       out << "*X-VS:#{vs}" if vs
       out << "*X-SS:#{ss}" if ss
+      out << "*X-KS:#{ks}" if ks
       out.join
     end
   end
