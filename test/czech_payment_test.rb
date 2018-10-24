@@ -60,6 +60,20 @@ class CzechPaymentTest < MiniTest::Test
     assert_equal 'SPD*1.0*ACC:CZ5855000000001265098001*AM:480.50*CC:CZK*RF:7004139146*DT:20120524*MSG:PLATBA ZA ZBOZI*X-SS:1234567890', result
   end
 
+  def test_czech_payment_with_constant_symbol
+    result = Rspayd::CzechPayment.generate_string(
+      :accountNumber => '810883001',
+      :bankCode => '5500',
+      :amount => 430.00,
+      :vs => '31030001',
+      :ks => '1234567890',
+      :message => 'Platba za domenu'
+    )
+
+    assert_equal 'SPD*1.0*ACC:CZ9555000000000810883001*AM:430.00*CC:CZK*MSG:PLATBA ZA DOMENU*X-VS:31030001*X-KS:1234567890', result
+  end
+
+
   def test_iban_checksum_prepend
     result = Rspayd::CzechPayment.new(
       :accountNumber => '2950281886',
