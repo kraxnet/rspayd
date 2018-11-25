@@ -10,9 +10,9 @@ module Rspayd
 
       def initialize(code)
         @code = code
-        @values = Hash[code.split(self.class::HEADER)[1].split('*').collect{|i|
+        @values = code.split(self.class::HEADER)[1].split('*').collect{|i|
           i.split(':',2)
-        }]
+        }.to_h
       end
 
       def check_keys!
